@@ -1,13 +1,12 @@
 import express from "express";
+import serverless from "serverless-http";
 
 const app = express();
 
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello World from serverless!");
 });
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
-});
+export const handler = serverless(app); // 👈 Very important for Vercel
